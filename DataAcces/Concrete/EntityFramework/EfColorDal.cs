@@ -1,66 +1,63 @@
 ﻿using DataAcces.Abstract;
 using Entitites.Concrete;
-using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace DataAcces.Concrete.EntityFramework
 {
-    public class EfCarDal : ICarDal
+    public class EfColorDal : IColorDal
     {
-        public void Add(Car entity)
+        public void Add(Color entity)
         {
             using (RentalContext context = new RentalContext())
             {
-                var addedEntity=context.Entry(entity);
+                var addedEntity = context.Entry(entity);
                 addedEntity.State = EntityState.Added;
                 context.SaveChanges();
             }
         }
 
-        public void Delete(Car entity)
+        public void Delete(Color entity)
         {
             using (RentalContext context = new RentalContext())
             {
-                var deletedEntity = context.Entry(entity);
+                var deletedEntity=context.Entry(entity);
                 deletedEntity.State = EntityState.Deleted;
                 context.SaveChanges();
 
             }
         }
 
-        public Car Get(Expression<Func<Car, bool>> filter)
+        public Color Get(Expression<Func<Color, bool>> filter)
         {
             using (RentalContext context = new RentalContext())
             {
-                return context.Set<Car>().SingleOrDefault(filter);
+                return context.Set<Color>().SingleOrDefault(filter);
             }
         }
 
-        public List<Car> GetAll(Expression<Func<Car, bool>> filter = null)
+        public List<Color> GetAll(Expression<Func<Color, bool>> filter = null)
         {
-            using (RentalContext context=new RentalContext())
+            using (RentalContext context = new RentalContext())
             {
-                return filter== null
-                    ? context.Set<Car>().ToList()
-                    : context.Set<Car>().Where(filter).ToList();
-
+                return filter==null
+                    ?context.Set<Color>().ToList()
+                    :context.Set<Color>().Where(filter).ToList();
             }
-        } 
-        
+        }
 
-        public void Update(Car entity)
+        public void Update(Color entity)
         {
             using (RentalContext context = new RentalContext())
             {
                 var updatedEntity = context.Entry(entity);
-                updatedEntity.State = EntityState.Modified;
+               updatedEntity.State = EntityState.Modified;
                 context.SaveChanges();
-
             }
         }
     }

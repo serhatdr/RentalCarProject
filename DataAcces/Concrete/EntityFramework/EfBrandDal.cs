@@ -10,57 +10,55 @@ using System.Threading.Tasks;
 
 namespace DataAcces.Concrete.EntityFramework
 {
-    public class EfCarDal : ICarDal
+    public class EfBrandDal : IBrandDal
     {
-        public void Add(Car entity)
+        public void Add(Brand entity)
         {
             using (RentalContext context = new RentalContext())
             {
-                var addedEntity=context.Entry(entity);
+                var addedEntity = context.Entry(entity);
                 addedEntity.State = EntityState.Added;
                 context.SaveChanges();
             }
         }
 
-        public void Delete(Car entity)
+        public void Delete(Brand entity)
         {
             using (RentalContext context = new RentalContext())
             {
                 var deletedEntity = context.Entry(entity);
-                deletedEntity.State = EntityState.Deleted;
-                context.SaveChanges();
+                    deletedEntity.State= EntityState.Deleted;
+                    context.SaveChanges();
+            }
+        }
+
+        public Brand Get(Expression<Func<Brand, bool>> filter)
+        {
+            using (RentalContext context = new RentalContext())
+            {
+                return context.Set<Brand>().SingleOrDefault(filter);
 
             }
         }
 
-        public Car Get(Expression<Func<Car, bool>> filter)
+        public List<Brand> GetAll(Expression<Func<Brand, bool>> filter = null)
         {
             using (RentalContext context = new RentalContext())
             {
-                return context.Set<Car>().SingleOrDefault(filter);
+                return filter ==null
+                    ?context.Set<Brand>().ToList()
+                    :context.Set<Brand>().Where(filter).ToList();
+
             }
         }
 
-        public List<Car> GetAll(Expression<Func<Car, bool>> filter = null)
-        {
-            using (RentalContext context=new RentalContext())
-            {
-                return filter== null
-                    ? context.Set<Car>().ToList()
-                    : context.Set<Car>().Where(filter).ToList();
-
-            }
-        } 
-        
-
-        public void Update(Car entity)
+        public void Update(Brand entity)
         {
             using (RentalContext context = new RentalContext())
             {
-                var updatedEntity = context.Entry(entity);
-                updatedEntity.State = EntityState.Modified;
+                var updatedContext = context.Entry(entity);
+                updatedContext.State= EntityState.Modified;
                 context.SaveChanges();
-
             }
         }
     }

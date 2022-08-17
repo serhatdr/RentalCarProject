@@ -12,5 +12,7 @@ namespace Business.Abstract
         List<Car> GetAll();
         List<Car> GetAllByCategoryId(int id);
         List<Car> GetAllByDailyPrice(decimal min,decimal max);
+        List<Car> GetCarsByBrandId(int brandId);
+        List<Car> GetCarsByColorId(int colorId);
     }
 }
