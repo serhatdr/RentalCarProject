@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.Constants;
 using Core.Utilities.Results;
 using DataAcces.Abstract;
 using Entitites.Concrete;
@@ -23,8 +24,13 @@ namespace Business.Concrete
         public IResult Add(Car car)
         {
             //business codes
-             _carDal.Add(car);
-            return new Result(true,"Ürün eklendi");
+             
+            if(car.Name.Length<2)
+            {
+                return new ErrorResult(Messages.CarNameInValid);
+            }
+            _carDal.Add(car);
+            return new SuccesResult(Messages.CarAdded);
         }
         public void Delete(Car car)
         {

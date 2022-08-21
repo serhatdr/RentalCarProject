@@ -14,6 +14,7 @@ namespace Core.Utilities.Results
         }
         public SuccesResult():base(true)
             {
+
             }
 
     }
