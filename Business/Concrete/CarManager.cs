@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Core.Utilities.Results;
 using DataAcces.Abstract;
 using Entitites.Concrete;
 using Entitites.DTOs;
@@ -19,9 +20,11 @@ namespace Business.Concrete
             _carDal = carDal;
         }
 
-        public void Add(Car car)
+        public IResult Add(Car car)
         {
+            //business codes
              _carDal.Add(car);
+            return new Result(true,"Ürün eklendi");
         }
         public void Delete(Car car)
         {

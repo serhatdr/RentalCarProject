@@ -5,12 +5,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Core.Utilities;
+using Core.Utilities.Results;
 
 namespace Business.Abstract
 {
     public interface ICarService
     {
-        void Add(Car car);  
+         
         void Delete(Car car);   
         void Update(Car car);
         List<Car> GetAll();
@@ -20,5 +22,6 @@ namespace Business.Abstract
         List<Car> GetCarsByColorId(int colorId);
         List<CarDetailDto> GetCarDetails();
         Car GetById(int id);
+        IResult Add(Car car);
     }
 }
