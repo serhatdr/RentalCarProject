@@ -18,7 +18,7 @@ namespace ConsoleUI
             CategoryManager categoryManager = new CategoryManager(new EfCategoryDal());
             foreach (var category in categoryManager.GetAll())
             {
-                Console.WriteLine(category.CategoryName + "" + category.CategoryId);
+                Console.WriteLine(category.CategoryName + "," + category.CategoryId);
             }
         }
 
@@ -35,6 +35,11 @@ namespace ConsoleUI
             {
                 Console.WriteLine(car.Id + "," + car.BrandId + "," + car.ModelYear + "," + car.ColorId);
             }
+            foreach (var car in carManager.GetCarDetails())
+            {
+                Console.WriteLine(car.Id + "," + car.Brand + "," + car.ModelYear + "," + car.Color);
+            }
         }
+
     }
 }
