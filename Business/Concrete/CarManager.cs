@@ -18,6 +18,11 @@ namespace Business.Concrete
             _carDal = carDal;
         }
 
+        public void Add(Car car)
+        {
+             _carDal.Add(car);
+        }
+
         public List<Car> GetAll()
         {
             //iş kodları
@@ -28,7 +33,6 @@ namespace Business.Concrete
         public List<Car> GetAllByCategoryId(int id)
         {
             return _carDal.GetAll(c=>c.CategoryId==id);
-
         }
 
         public List<Car> GetAllByDailyPrice(decimal min, decimal max)

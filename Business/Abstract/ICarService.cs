@@ -9,6 +9,7 @@ namespace Business.Abstract
 {
     public interface ICarService
     {
+        void Add(Car car);  
         List<Car> GetAll();
         List<Car> GetAllByCategoryId(int id);
         List<Car> GetAllByDailyPrice(decimal min,decimal max);
