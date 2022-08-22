@@ -42,34 +42,32 @@ namespace Business.Concrete
             _carDal.Update(car);
         }
 
-        public List<Car> GetAll()
+        public IDataResult<List<Car>> GetAll()
         {
-            //iş kodları
-            //Yetkisi var mı?
-            return _carDal.GetAll();   
+            return new DataResult<List<Car>>(_carDal.GetAll(),true,"Ürünler Listelendi");   
         }
 
-        public List<Car> GetAllByCategoryId(int id)
+        public IDataResult<List<Car>> GetAllByCategoryId(int id)
         {
             return _carDal.GetAll(c=>c.CategoryId==id);
         }
 
-        public List<Car> GetAllByDailyPrice(decimal min, decimal max)
+        public IDataResult<List<Car>> GetAllByDailyPrice(decimal min, decimal max)
         {
             return _carDal.GetAll(c=>c.DailyPrice>=min && c.DailyPrice<=max);
         }
 
-        public List<Car> GetCarsByBrandId(int brandId)
+        public IDataResult<List<Car>> GetCarsByBrandId(int brandId)
         {
             return _carDal.GetAll(c => c.BrandId == brandId);
         }
 
-        public List<Car> GetCarsByColorId(int colorId)
+        public IDataResult<List<Car>> GetCarsByColorId(int colorId)
         {
             return _carDal.GetAll(c => c.ColorId == colorId);
         }
 
-        public List<CarDetailDto> GetCarDetails()
+        public IDataResult<List<GetCarDto>> GetCarDetails()
         {
             return _carDal.GetCarDetails();
         }
