@@ -11,9 +11,9 @@ namespace Business.Constants
     {
         public static string CarAdded = "Ürün eklendi";
         public static string CarNameInValid = "Geçersiz isim";
-        internal static List<Car> MaintenanceTime;
-        internal static string CarsListed;
+        internal static string MaintenanceTime="Sistem bakımda";
+        internal static string CarsListed="Arabalar Listelendi";
 
-        public static string 
+       
     }
 }
