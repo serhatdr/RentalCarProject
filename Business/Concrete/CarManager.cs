@@ -29,6 +29,7 @@ namespace Business.Concrete
             {
                 return new ErrorResult(Messages.CarNameInValid);
             }
+           
             _carDal.Add(car);
             return new SuccessResult(Messages.CarAdded);
         }
@@ -78,7 +79,7 @@ namespace Business.Concrete
 
          public IDataResult<Car> GetById(int id)
         {
-            return new SuccessDataResult<Car>(_carDal.Get(c => c.Id == id));
+            return new SuccessDataResult<Car>(_carDal.Get(c => c.Id == id),Messages.CarGotById);
         }
 
         
